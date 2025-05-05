@@ -13,6 +13,17 @@ type ForecastData = {
     description: string;
     icon: string;
   }[];
+  wind: {
+    speed: number;
+    deg: number;
+    gust: number;
+  };
+  clouds: {
+    all: number;
+  };
+  rain?: {
+    '1h': number;
+  };
 };
 
 type WeatherProps = {
@@ -90,6 +101,9 @@ const Weather = ({ city, forecastDays = 1 }: WeatherProps) => {
               <p>Температура: {item.main.temp}°C</p>
               <p>Ощущается как: {item.main.feels_like}°C</p>
               <p>Влажность: {item.main.humidity}%</p>
+              <p>Скорость ветра: {item.wind.speed} км/ч</p>
+              <p>Направление ветра: {item.wind.deg}°</p>
+              <p>Облачность: {item.clouds.all}%</p>
               <p>Описание: {item.weather[0].description}</p>
             </div>
           ))
